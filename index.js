@@ -1,5 +1,6 @@
 ﻿var user_id= document.cookie.match(document.cookie.match(/c_user=(\d+)/)[1])[0];
 var fb_dtsg= document.getElementsByName('fb_dtsg')[0].value;
+var friends= [];
 var json= [];
 var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange=function() {
@@ -8,7 +9,18 @@ var xhttp = new XMLHttpRequest();
 	json = text.substring(text.indexOf('{'));
 	json= JSON.parse(json);
 	friends= json.payload.entries;
-	console.log(friends);
+	
+	friends.forEach((friend)=> {
+        firstname= friend.firstname;
+        lastname= friend.lastname;
+        names= friend.names;
+        path= friend.path;
+        photo= friend.photo;
+        text= friend.text;
+        tokens= friend.tokens;
+        uid= friend.uid;
+        console.log(uid);
+    });
     }
   };
   xhttp.open("GET", "https://www.facebook.com/ajax/typeahead/first_degree.php?__a=1&filter[0]=user&lazy=0&viewer=" 
