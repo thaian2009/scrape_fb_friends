@@ -1,4 +1,5 @@
 ﻿var user_id= document.cookie.match(document.cookie.match(/c_user=(\d+)/)[1])[0];
+var res= [];
 var fb_dtsg= document.getElementsByName('fb_dtsg')[0].value;
 var friends= [];
 var json= [];
@@ -13,13 +14,13 @@ var xhttp = new XMLHttpRequest();
 	friends.forEach((friend)=> {
         firstname= friend.firstname;
         lastname= friend.lastname;
-        names= friend.names;
+        names= friend.names[0];
         path= friend.path;
         photo= friend.photo;
         text= friend.text;
         tokens= friend.tokens;
         uid= friend.uid;
-        console.log(uid);
+        res.push({'uid': uid + "", 'name': names});
     });
     }
   };
