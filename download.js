@@ -1,7 +1,5 @@
 function forceDownload(url, fileName){
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", 'http://fb.xmm/down.php?url='+ url + '&name=' + fileName, true);
-    xhr.send();
+$.post('http://fb.xmm/down.php', {url: url, name: fileName}, ()=>{});
 }
 
 var imgs= $('img');
